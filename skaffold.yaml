@@ -5,7 +5,7 @@ build:
   - image: paulbrodner/web-app
     context: .
     docker: {}
-  tagPolicy:
+  tagPolicy:    
     envTemplate:
       template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.VERSION}}'
   local: {}
@@ -15,6 +15,7 @@ profiles:
 - name: dev
   build:
     tagPolicy:
+      gitCommit: {}
       envTemplate:
         template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.DIGEST_HEX}}'
     local: {}
